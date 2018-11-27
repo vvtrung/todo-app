@@ -13,3 +13,18 @@ export function deleteTodo(id) {
     id
   }
 }
+
+export function markTodo(id) {
+  return {
+    type: types.MARK_TODO,
+    id
+  }
+}
+
+export function editTodo(id, text) {
+  return {
+    type: types.EDIT_TODO,
+    id,
+    text
+  }
+}
