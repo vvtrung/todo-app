@@ -28,3 +28,15 @@ export function editTodo(id, text) {
     text
   }
 }
+
+export function markAll() {
+  return {
+    type: types.MARK_ALL
+  };
+}
+
+export function clearMarked() {
+  return {
+    type: types.CLEAR_MARKED
+  };
+}

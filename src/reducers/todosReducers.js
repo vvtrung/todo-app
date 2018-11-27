@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, MARK_TODO, EDIT_TODO } from '../constants/ActionTypes';
+import { ADD_TODO, DELETE_TODO, MARK_TODO, EDIT_TODO, MARK_ALL, CLEAR_MARKED } from '../constants/ActionTypes';
 
 const initialState = [{
   text: 'Use Redux',
@@ -23,6 +23,13 @@ export default function todosReducers(state = initialState, action) {
     
     case EDIT_TODO:
       return state.map((todo) => todo.id === action.id ? {...todo, text: action.text} : todo);
+    
+    case MARK_ALL:
+      const areAllMarked = state.every((todo) => todo.marked);
+      return state.map((todo) => ({...todo, marked: !areAllMarked}));
+
+    case CLEAR_MARKED:
+      return state.filter((todo) => todo.marked === false);
 
     default:
       return state;
