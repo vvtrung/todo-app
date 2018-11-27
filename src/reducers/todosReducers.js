@@ -1,4 +1,4 @@
-import { ADD_TODO } from '../constants/ActionTypes';
+import { ADD_TODO, DELETE_TODO } from '../constants/ActionTypes';
 
 const initialState = [{
   text: 'Use Redux',
@@ -14,6 +14,10 @@ export default function todosReducers(state = initialState, action) {
         marked: false,
         text: action.text
       }, ...state];
+
+    case DELETE_TODO:
+      return state.filter((todo) => todo.id !== action.id);
+      
     default:
       return state;
   }

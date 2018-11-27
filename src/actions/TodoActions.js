@@ -6,3 +6,10 @@ export function addTodo(text) {
     text
   };
 }
+
+export function deleteTodo(id) {
+  return {
+    type: types.DELETE_TODO,
+    id
+  }
+}

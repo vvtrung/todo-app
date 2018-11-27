@@ -5,6 +5,7 @@ import autoBind from 'react-autobind';
 export default class TodoItem extends Component {
   static propTypes = {
     todo: PropTypes.object.isRequired,
+    deleteTodo: PropTypes.func.isRequired
   };
 
   constructor(props, context) {
@@ -16,14 +17,15 @@ export default class TodoItem extends Component {
   }
 
   render() {
-    const {todo} = this.props;
+    const {todo, deleteTodo} = this.props;
     let element = (
       <div className='view'>
         <input className='toggle' type='checkbox' />
         <label>
           {todo.text}
         </label>
-        <button className='destroy' />
+        <button className='destroy'
+                onClick={() => deleteTodo(todo.id)} />
       </div>
     );
 
